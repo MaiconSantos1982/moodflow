@@ -179,12 +179,28 @@
         }
         
         /* Mood Selector */
-        .mood-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
+        /* Mood Grid com scroll horizontal - FIX para mobile */
+.mood-grid-scroll {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5rem 0;
+    margin: 1rem 0;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+.mood-grid-scroll::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.mood-grid-scroll .mood-item {
+    min-width: 70px;
+    flex-shrink: 0;
+}
         
         .mood-item {
             text-align: center;
@@ -629,7 +645,7 @@
         <div class="content-area">
             <div class="card-custom">
                 <h5 class="mb-3">Como você está se sentindo?</h5>
-                <div class="mood-grid">
+                <div class="mood-grid-scroll">
                     <div class="mood-item" onclick="selectMood(this, 2)">
                         <div class="mood-emoji">😢</div>
                         <div class="mood-label">Triste</div>
